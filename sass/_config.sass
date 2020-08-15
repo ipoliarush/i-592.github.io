@@ -1,0 +1,106 @@
+// USER VARIABLES SECTION
+
+$accent: #FFC824 // Accent Color
+$fontsize: 18px // Body Font Size
+$textcolor: #272727 // Text Color
+$system: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+$roboto: Roboto, sans-serif // Roboto Font Family
+$sectionPadding: 100px
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 20px
+$gutter: $grid-gutter-width
+
+// FONTS LOAD SECTION
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		// font-display: swap // Uncomment to initially display system fonts
+		src: local($fname), url($furl) format('woff2')
+
+@include font('Roboto', normal, 400, '../fonts/roboto-regular-webfont.woff2')
+@include font('Roboto', italic, 400, '../fonts/roboto-italic-webfont.woff2')
+@include font('Roboto', normal, 700, '../fonts/roboto-bold-webfont.woff2')
+@include font('Roboto', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2')
+
+// GENERAL DOCUMENT STYLES
+
+*,
+*::after,
+*::before
+	box-sizing: border-box
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body
+	font-family: $roboto
+	font-size: $fontsize
+	font-style: normal
+	min-width: 320px
+	position: relative
+	line-height: 135%
+	overflow-x: hidden
+	color: $textcolor
+	margin: 0
+	padding: 0
+
+.container
+	max-width: 1200px
+	width: 100%
+	margin: 0 auto
+
+.btn
+	letter-spacing: 0.05em
+	line-height: 100%
+	font-size: 16px
+	border: 1px solid #000000
+	background-color: #ffffff
+	text-transform: uppercase
+	filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.05))
+	transition: .2s
+
+	&:hover
+		color: #ffffff
+		background-color: $textcolor
+
+.section-num
+	font-weight: 500
+	font-size: 18px
+	line-height: 100%
+	color: rgba(39, 39, 39, 0.4)
+	font-weight: 400
+
+.section-title
+	text-transform: uppercase
+	font-size: 40px
+	line-height: 135%
+	font-weight: normal
+	margin-top: 0
+	margin-bottom: 0
+
+.arrow
+	cursor: pointer
+
+	&:hover
+		filter: drop-shadow(0px 20px 15px rgba(0, 0, 0, 0.15))
+
+@media screen and (max-width: 1200px)
+	.container
+		padding-left: 15px
+		padding-right: 15px
+

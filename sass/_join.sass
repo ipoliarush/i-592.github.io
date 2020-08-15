@@ -1,0 +1,129 @@
+.join
+    background-color: #3b2021
+    padding-top: $sectionPadding + 2px
+    padding-bottom: $sectionPadding + 2px
+
+    .container
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    &-num
+        color: rgba(255, 255, 255, 0.4)
+
+    &-title
+        color: #fff
+        margin-top: 53px
+
+    &-text
+        color: rgba(255, 255, 255, 0.7)
+        margin-bottom: 0
+        margin-top: 11px
+        max-width: 297px
+        text-align: center
+
+    &-vacancies
+        width: 100%
+        margin-top: 70px
+
+        &__controll
+            display: flex
+            justify-content: space-between
+            width: 100%
+
+            &-btn
+                max-width: 380px
+                padding-top: 25px
+                padding-bottom: 28px
+                width: 100%
+                display: flex
+                justify-content: center
+                align-items: center
+                font-weight: 500
+                background-color: #462E2F
+                outline: none
+                border: none
+                box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.15)
+                font-size: 24px
+                line-height: 100%
+                color: #FFFFFF
+                transition: .2s
+
+                &:not(.join-vacancies__controll-btn--active)
+                    cursor: pointer
+
+                &--active
+                    background-color: $accent
+                    color: #2A2A2A
+
+        &__text
+            margin-top: 40px
+            max-width: 747px
+            color: #ffffff
+
+        &__terms
+            margin-top: 52px
+            grid-column-gap: 266px
+            display: grid
+            grid-template-columns: 1fr 1fr
+
+            &-responsibilities
+                max-width: 429px
+
+            &-title
+                margin-top: 0
+                margin-bottom: 0
+                font-weight: 500
+                font-size: 18px
+                line-height: 135%
+                text-transform: uppercase
+                color: #FFFFFF
+
+            &-list
+                padding-left: 18px
+                margin-top: 30px
+                margin-bottom: 0
+                color: rgba(255, 255, 255, 0.6)
+
+                &__item
+                    font-size: 16px
+                    line-height: 135%
+
+                    &:not(:last-child)
+                        margin-bottom: 22px
+
+            &-send
+                position: relative
+                top: 40px
+                font-size: 18px
+                line-height: 135%
+                color: rgba(255, 255, 255, 0.6)
+
+                a
+                    color: $accent
+
+@media screen and (max-width: 1200px)
+    .join
+
+        &-vacancies
+
+            &__terms
+                grid-column-gap: 60px
+
+            &__controll
+                flex-direction: column
+                align-items: center
+
+                &-btn
+
+                    &:not(:last-child)
+                        margin-bottom: 20px
+
+@media screen and (max-width: 800px)
+    .join
+
+        &-vacancies
+
+            &__terms
+                grid-template-columns: 1fr
+                grid-row-gap: 50px

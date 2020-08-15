@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<title>SYXGAME</title>
+	<meta name="description" content="SYXGAME">
+	<meta name="viewport" content="width=device-width">
+	<link rel="icon" href="images/favicon.png">
+	<link rel="stylesheet" href="css/app.min.css">
+
+</head>
+
+<body>
+
+	<header class="header" id="header">
+		<div class="container">
+			<img class="header-logo" src="images/dest/logo.png" alt="SYXGAME">
+
+			<img v-if="!isOpen && mobile" @click="isOpen = true" src="images/dest/burger.svg" alt="Menu" class="header-burger">
+
+			<img v-else-if="isOpen && mobile" @click="isOpen = false" src="images/dest/closeMenu.svg" alt="Menu" class="header-close">
+
+			<nav class="header-nav" :class="{'header-nav--active': isOpen}" id="header-nav">
+				<span @click="linkClick(n)" :key="n" v-for="(link, n) in links" class="header-nav__link" :class="{'header-nav__link--active': activeItem === n}">
+					{{ link.text }}
+				</span>
+			</nav>
+		</div>
+	</header>
+
+	<section class="main-slider" id="main-slider">
+		<div class="main-slider__controller">
+			<img @click="prevSlide(); clearAutoSlider()" src="images/dest/arrow-left.svg" alt="left" class="arrow arrow-left">
+
+			<ul class="main-slider__controller-list">
+				<li v-for="n in countSlide" @click="slide = n; clearAutoSlider(); position = thisPositionCalc();" class="projects-slider__info-controll__list-item" :class="{'main-slider__controller-list__item--active': slide === n}">
+
+				</li>
+			</ul>
+
+			<img @click="nextSlide(); clearAutoSlider()" src="images/dest/arrow-right.svg" alt="left" class="arrow arrow-right">
+		</div>
+
+		<div class="main-slider-box" :style="{right: position + '%'}">
+			<article class="main-slider__slide-img">
+				<img src="images/dest/main-slider-1.jpg" alt="SYXGAME" class="main-slider__slide-full-img">
+			</article>
+
+			<article class="main-slider__slide-content">
+				<div class="container">
+					<div class="main-slider__slide-content__info">
+						<h2 class="main-slider__slide-content__info-title">
+							Developer
+						</h2>
+
+						<h3 class="main-slider__slide-content__info-subtitle">
+							We love to make games
+						</h3>
+
+						<p class="main-slider__slide-content__info-text">
+							We are a young and creative team focused to bring the 
+							best quality games for everyone. If you are looking for 
+							someone to develop a game for you, here we are.
+						</p>
+
+						<button class="main-slider__slide-content__info-btn btn">
+							learn more
+						</button>
+					</div>
+
+					<img src="images/dest/main-slider-2.png" alt="DEVELOPER" class="main-slider__slide-content__img">
+				</div>
+			</article>
+
+			<article class="main-slider__slide-content">
+				<div class="container">
+					<div class="main-slider__slide-content__info">
+						<h2 class="main-slider__slide-content__info-title">
+							iOS/ANDROID GAME DEVELOPMENT
+						</h2>
+
+						<h3 class="main-slider__slide-content__info-subtitle">
+							FROM VISION TO REALITY
+						</h3>
+
+						<p class="main-slider__slide-content__info-text">
+							We are developing different games, high-level 
+							complexities, and new challenges and can deliver 
+							the best iOS/Android games with perfect user experience. 
+							A final product is delivered to the customer.
+						</p>
+
+						<button class="main-slider__slide-content__info-btn btn">
+							learn more
+						</button>
+					</div>
+
+					<img src="images/dest/main-slider-3.png" alt="DEVELOPER" class="main-slider__slide-content__img">
+				</div>
+			</article>
+
+			<article class="main-slider__slide-content">
+				<div class="container">
+					<div class="main-slider__slide-content__info">
+						<h2 class="main-slider__slide-content__info-title">
+							GAME ARTWORK OUSORSING
+						</h2>
+
+						<h3 class="main-slider__slide-content__info-subtitle">
+							IF YOU HAVE AN IDEA, WE HAVE THE TOOLS
+						</h3>
+
+						<p class="main-slider__slide-content__info-text">
+							Join us and explore the fantastic world of game 
+							development. Bring your talentsto Syxgame studio 
+							to create great games together. Learn how to use 
+							the newest technologies, meet incredible people, 
+							and gain new skills
+						</p>
+
+						<button class="main-slider__slide-content__info-btn btn">
+							learn more
+						</button>
+					</div>
+
+					<img src="images/dest/main-slider-4.png" alt="DEVELOPER" class="main-slider__slide-content__img">
+				</div>
+			</article>
+
+			<article class="main-slider__slide-content">
+				<div class="container">
+					<div class="main-slider__slide-content__info">
+						<h2 class="main-slider__slide-content__info-title">
+							LOOKING FOR <br>A NEW JOB?
+						</h2>
+
+						<h3 class="main-slider__slide-content__info-subtitle">
+							CHECK OUT OUR JOB SECTION
+						</h3>
+
+						<p class="main-slider__slide-content__info-text">
+							Join us and explore the fantastic world of game 
+							development. Bring your talents to Syxgame studio 
+							to create great games together. Learn how to use the 
+							newest technologies, meet incredible people, and gain 
+							new skills.
+						</p>
+
+						<button class="main-slider__slide-content__info-btn btn">
+							learn more
+						</button>
+					</div>
+
+					<img src="images/dest/main-slider-5.png" alt="DEVELOPER" class="main-slider__slide-content__img">
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<section class="about container">
+		<span class="about-num section-num">
+			/01
+		</span>
+
+		<h2 class="about-title section-title">
+			Game development outsourcing company in Georgia
+		</h2>
+
+		<article class="about-article">
+			<p class="about-article__text">
+				Syxgame is an outsourcing game development studio with 
+				headquarters in Georgia that builds games for external 
+				customers all over the world, mostly specializing in regions 
+				like Europe, Asia, and the United States.
+			</p>
+			<p class="about-article__text"">
+				We provide a full range of game development services 
+				that cover game design, art design (2D and 3D), animations, 
+				and programming including backend. Our team is a tight cluster 
+				of seasoned game developers and artists that are always willing 
+				to do the impossible to deliver quality products and ensure maximum 
+				satisfaction. That’s why we take pride in creating unique, aesthetically 
+				pleasing games that go beyond client expectations and provide true inspiration.
+			</p>
+		</article>
+	</section>
+
+	<section class="we-are">
+		<div class="container">
+			<span class="we-are-num section-num">
+				/02
+			</span>
+
+			<h2 class="we-are-title section-title">
+				We are
+			</h2>
+
+			<ul class="we-are-grid">
+				<li class="we-are-grid__item">
+					<div class="we-are-grid__item-img__wrap">
+						<img src="images/dest/customer-driven.png" class="we-are-grid__item-img" alt="Customer-driven">
+					</div>
+					<h3 class="we-are-grid__item-title">
+						Customer-driven
+					</h3>
+					<p class="we-are-grid__item-text">
+						We build our client relationships on a strong basis of trust. 
+						We earn your trust by ensuring complete transparency at every 
+						step from start to the end.
+					</p>
+				</li>
+				<li class="we-are-grid__item">
+					<div class="we-are-grid__item-img__wrap">
+						<img src="images/dest/innovation-oriented.png" class="we-are-grid__item-img" alt="Innovation-oriented">
+					</div>
+					<h3 class="we-are-grid__item-title">
+						Innovation-oriented
+					</h3>
+					<p class="we-are-grid__item-text">
+						Syxgame studio does not limit itself to the current trends 
+						but glides through the emerging trends & technologies to craft 
+						perfect solutions for you.
+					</p>
+				</li>
+				<li class="we-are-grid__item">
+					<div class="we-are-grid__item-img__wrap">
+						<img src="images/dest/technology-focused.png" class="we-are-grid__item-img" alt="Technology-focused">
+					</div>
+					<h3 class="we-are-grid__item-title">
+						Technology-focused
+					</h3>
+					<p class="we-are-grid__item-text">
+						Technology is at the core of our operations. We choose and 
+						have a close eye on the latest technological trends to craft 
+						perfect digital experiences for you.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="we-do">
+		<div class="container">
+			<span class="we-do-num section-num">
+				/03
+			</span>
+	
+			<h2 class="we-do-title section-title">
+				WHAT WE DO
+			</h2>
+
+			<h3 class="we-do-subtitle">
+				Game development is our passion
+			</h3>
+
+			<p class="we-do-text">
+				We will make a game for you
+			</p>
+
+			<ul class="we-do-list">
+				<li class="we-do-list__item">
+					<img src="images/dest/programming.png" alt="Programming" class="we-do-list__item-img">
+
+					<h3 class="we-do-list__item-title">
+						Programming
+					</h3>
+
+					<p class="we-do-list__item-text">
+						Our team can handle any programming task, even in 
+						the most exotic language.
+					</p>
+				</li>
+				<li class="we-do-list__item">
+					<img src="images/dest/designing.png" alt="Designing" class="we-do-list__item-img">
+
+					<h3 class="we-do-list__item-title">
+						Designing
+					</h3>
+
+					<p class="we-do-list__item-text">
+						We have experience, knowledge, and skills which allow 
+						us to design <br>top-grossing games.
+					</p>
+				</li>
+				<li class="we-do-list__item">
+					<img src="images/dest/graphics.png" alt="Graphics" class="we-do-list__item-img">
+
+					<h3 class="we-do-list__item-title">
+						Graphics
+					</h3>
+
+					<p class="we-do-list__item-text">
+						Mind-blowing,<br> pixar-style graphics, made by talented 
+						people is something we can be proud of.
+					</p>
+				</li>
+				<li class="we-do-list__item">
+					<img src="images/dest/modelling.png" alt="Modelling" class="we-do-list__item-img">
+
+					<h3 class="we-do-list__item-title">
+						Modelling
+					</h3>
+
+					<p class="we-do-list__item-text">
+						We have the real masters of 3D space in our team. 
+						With incredible accuracy and realism, they simulate 
+						each polygon.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="projects">
+		<div class="container">
+			<span class="projects-num section-num">
+				/04
+			</span>
+	
+			<h2 class="projects-title section-title">
+				OUR PROJECTS
+			</h2>
+
+			<p class="projects-text">
+				Due to the fact that we develop games for 
+				external customers, we cannot show you screenshots 
+				of the games and level design. But look at these 
+				concept arts!
+			</p>
+
+			<div class="projects-sliders">
+				<div class="projects-slider" id="projects-slider-1">
+					<div class="projects-slider__info">
+						<h3 class="projects-slider__info-title">
+							Space racing game
+						</h3>
+
+						<p class="projects-slider__info-platform">
+							Platform: <span>iOS/Android</span>
+						</p>
+
+						<p class="projects-slider__info-year">
+							Year: <span>Feb. 2020</span>
+						</p>
+
+						<div class="projects-slider__info-controll">
+							<img @click="prevSlide(); clearAutoSlider()" src="images/dest/arrow-left.svg" alt="left" class="arrow arrow-left">
+							<ul class="projects-slider__info-controll__list">
+								<li v-for="n in countSlide" @click="slide = n; clearAutoSlider(); position = thisPositionCalc()" class="projects-slider__info-controll__list-item" :class="{'projects-slider__info-controll__list-item--active': slide === n}">
+
+								</li>
+							</ul>
+							<img @click="nextSlide(); clearAutoSlider()" src="images/dest/arrow-right.svg" alt="left" class="arrow arrow-right">
+						</div>
+					</div>
+
+					<div class="projects-slider__container">
+						<div class="projects-slider__box" :style="{right: position + '%'}">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+						</div>
+					</div>
+				</div>
+
+				<div class="projects-slider" id="projects-slider-2">
+					<div class="projects-slider__info">
+						<h3 class="projects-slider__info-title">
+							Puzzle game
+						</h3>
+
+						<p class="projects-slider__info-platform">
+							Platform: <span>IOS</span>
+						</p>
+
+						<p class="projects-slider__info-year">
+							Year: <span>Late 2019</span>
+						</p>
+
+						<div class="projects-slider__info-controll">
+							<img @click="prevSlide(); clearAutoSlider()" src="images/dest/arrow-left.svg" alt="left" class="arrow arrow-left">
+							<ul class="projects-slider__info-controll__list">
+								<li v-for="n in countSlide" @click="slide = n; clearAutoSlider(); position = thisPositionCalc()" class="projects-slider__info-controll__list-item" :class="{'projects-slider__info-controll__list-item--active': slide === n}">
+
+								</li>
+							</ul>
+							<img @click="nextSlide(); clearAutoSlider()" src="images/dest/arrow-right.svg" alt="left" class="arrow arrow-right">
+						</div>
+					</div>
+
+					<div class="projects-slider__container">
+						<div class="projects-slider__box" :style="{right: position + '%'}">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+						</div>
+					</div>
+				</div>
+
+				<div class="projects-slider" id="projects-slider-3">
+					<div class="projects-slider__info">
+						<h3 class="projects-slider__info-title">
+							2D platform game
+						</h3>
+
+						<p class="projects-slider__info-platform">
+							Platform: <span>Android</span>
+						</p>
+
+						<p class="projects-slider__info-year">
+							Year: <span>Jun. 2020</span>
+						</p>
+
+						<div class="projects-slider__info-controll">
+							<img @click="prevSlide(); clearAutoSlider()" src="images/dest/arrow-left.svg" alt="left" class="arrow arrow-left">
+							<ul class="projects-slider__info-controll__list">
+								<li v-for="n in countSlide" @click="slide = n; clearAutoSlider(); position = thisPositionCalc()" class="projects-slider__info-controll__list-item" :class="{'projects-slider__info-controll__list-item--active': slide === n}">
+
+								</li>
+							</ul>
+							<img @click="nextSlide(); clearAutoSlider()" src="images/dest/arrow-right.svg" alt="left" class="arrow arrow-right">
+						</div>
+					</div>
+
+					<div class="projects-slider__container">
+						<div class="projects-slider__box" :style="{right: position + '%'}">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+							<img src="images/dest/space-racing.jpg" alt="Space racing game" class="projects-slider__img">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="employees container">
+		<span class="employees-num section-num">
+			/05
+		</span>
+
+		<h2 class="employees-title section-title">
+			Meet our employees
+		</h2>
+
+		<p class="employees-text">
+			Let's get to know each other!
+		</p>
+
+		<ul class="employees-list">
+			<li class="employees-list__item">
+				<img src="images/dest/natia.png" alt="Natia" class="employees-list__item-img">
+
+				<h3 class="employees-list__item-name">
+					Natia
+				</h3>
+
+				<span class="employees-list__item-post">
+					2D artist/animator
+				</span>
+			</li>
+
+			<li class="employees-list__item">
+				<img src="images/dest/temuri.png" alt="Temuri" class="employees-list__item-img">
+
+				<h3 class="employees-list__item-name">
+					Temuri
+				</h3>
+
+				<span class="employees-list__item-post">
+					3D artist/modeler
+				</span>
+			</li>
+
+			<li class="employees-list__item">
+				<img src="images/dest/alexei.png" alt="Alexei" class="employees-list__item-img">
+
+				<h3 class="employees-list__item-name">
+					Alexei
+				</h3>
+
+				<span class="employees-list__item-post">
+					Game programmer
+				</span>
+			</li>
+
+			<li class="employees-list__item">
+				<img src="images/dest/david.png" alt="David" class="employees-list__item-img">
+
+				<h3 class="employees-list__item-name">
+					David
+				</h3>
+
+				<span class="employees-list__item-post">
+					Game designer
+				</span>
+			</li>
+
+			<li class="employees-list__item">
+				<img src="images/dest/georgi.png" alt="Georgi" class="employees-list__item-img">
+
+				<h3 class="employees-list__item-name">
+					Georgi
+				</h3>
+
+				<span class="employees-list__item-post">
+					Senior QA Engineer
+				</span>
+			</li>
+		</ul>
+	</section>
+
+	<section class="join">
+		<div class="container">
+			<span class="join-num section-num">
+				/06
+			</span>
+	
+			<h2 class="join-title section-title">
+				Join us
+			</h2>
+	
+			<p class="join-text">
+				Bring your talents to Syxgame studio to create great games together!
+			</p>
+
+			<div class="join-vacancies" id="vacancies">
+				<div class="join-vacancies__controll">
+					<button @click="post = 1" :class="{ 'join-vacancies__controll-btn--active': post === 1 }" class="join-vacancies__controll-btn">
+						Project manager
+					</button>
+
+					<button @click="post = 2" :class="{ 'join-vacancies__controll-btn--active': post === 2 }" class="join-vacancies__controll-btn">
+						Sound designer
+					</button>
+
+					<button @click="post = 3" :class="{ 'join-vacancies__controll-btn--active': post === 3 }" class="join-vacancies__controll-btn">
+						Junior QA Engineer
+					</button>
+				</div>
+
+				<p class="join-vacancies__text">
+					{{ content[post].text }}
+				</p>
+
+				<div class="join-vacancies__terms">
+					<div class="join-vacancies__terms-responsibilities">
+						<h3 class="join-vacancies__terms-title">
+							Responsibilities
+						</h3>
+
+						<ol class="join-vacancies__terms-list">
+							<li v-for="(item, index) in content[post].responsibilities" :key="index" class="join-vacancies__terms-list__item">
+								{{ item }}
+							</li>
+						</ol>
+					</div>
+
+					<div class="join-vacancies__terms-requirements">
+						<h3 class="join-vacancies__terms-title">
+							Requirements
+						</h3>
+
+						<ol class="join-vacancies__terms-list">
+							<li v-for="(item, index) in content[post].requirements" :key="index" class="join-vacancies__terms-list__item">
+								{{ item }}
+							</li>
+						</ol>
+
+						<span class="join-vacancies__terms-send">
+							Please send your CV to: <a href="mailto:job@syxgame.ge">job@syxgame.ge</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contacts">
+		<div class="container">
+			<span class="contacts-num section-num">
+				/07
+			</span>
+	
+			<h2 class="contacts-title section-title">
+				Contact us
+			</h2>
+	
+			<article class="contacts-article">
+				<div class="contacts-article__map">
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.0392350980187!2d-74.01132148438342!3d40.73916217932896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2597f3c1ed049%3A0xcc89f3f59bb6d48c!2sWix%20Offices!5e0!3m2!1sru!2sru!4v1597321535304!5m2!1sru!2sru" width="100%" height="340" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				</div>
+
+				<form action="" @submit.prevent="sendForm" class="contacts-article__form" id="form">
+					<h3 class="contacts-article__form-title">
+						Say Hello!
+					</h3>
+
+					<input required type="email" name="email" v-model="email" id="email" placeholder="Your email" class="contacts-article__form-email">
+
+					<textarea name="comment" id="comment" v-model="comment" cols="31" rows="8" placeholder="Comments ..." class="contacts-article__form-comment"></textarea>
+
+					<button class="contacts-article__form-btn">
+						Send message
+					</button>
+				</form>
+			</article>
+		</div>
+	</section>
+
+	<div class="footer">
+		<div class="container">
+			<span class="footer-copy">
+				Copyright ©2020. Syxgame LLC
+			</span>
+
+			<span class="footer-address">
+				0160, Georgia,
+				City Tbilisi, Saburtalo District,
+				29A Vazha-Pshavela ave.
+			</span>
+
+			<span class="footer-email">
+				E-mail: <a href="mailto:info@syxgame.ge">info@syxgame.ge</a>
+			</span>
+		</div>
+	</div>
+
+	<div v-if="visible" class="thank" id="thank">
+		<div class="thank-modal">
+			<img @click="close" src="images/dest/close.svg" alt="close" class="thank-modal__close">
+
+			<img src="images/dest/thank.svg" alt="Thank you!" class="thank-modal__img">
+
+			<h2 class="thank-modal__title">
+				Thank you!
+			</h2>
+
+			<p class="thank-modal__text">
+				Our managers will contact you shortly.
+			</p>
+		</div>
+	</div>
+
+	<script src="js/vue.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/app.min.js"></script>
+
+</body>
+
+</html>

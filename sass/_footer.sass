@@ -1,0 +1,88 @@
+.footer
+    padding-top: 30px
+    padding-bottom: 30px
+    background-color: #3b2021
+
+    .container
+        display: flex
+        padding-right: 3px
+        justify-content: space-between
+
+    &-copy
+        font-size: 14px
+        line-height: 100%
+        color: rgba(255, 255, 255, 0.6)
+
+    &-address
+        position: relative
+        top: 1px
+        font-weight: normal
+        font-size: 14px
+        line-height: 135%
+        max-width: 277px
+        color: rgba(255, 255, 255, 0.6)
+        position: relative
+
+        &::after
+            content: ''
+            position: absolute
+            left: -28px
+            top: 0px
+            width: 18px
+            height: 18px
+            background: url("../images/dest/locale.svg")
+
+    &-email
+        position: relative
+        top: 1px
+        font-weight: normal
+        font-size: 14px
+        line-height: 100%
+        color: rgba(255, 255, 255, 0.6)
+        position: relative
+
+        &::after
+            content: ''
+            width: 18px
+            height: 18px
+            background: url("../images/dest/mail.svg")
+            position: absolute
+            left: -28px
+
+
+        a 
+            color: $accent
+            font-weight: 500
+            font-size: 16px
+            line-height: 100%
+            margin-left: 12px
+
+@media screen and (max-width: 1200px)
+    .footer
+
+        .container
+            padding-left: 15px
+            padding-right: 15px
+
+@media screen and (max-width: 920px)
+    .footer
+
+        .container
+            flex-direction: column
+            // align-items: center
+            padding-left: 28px + 15px
+
+        &-copy,
+        &-email,
+        &-address
+            top: 0
+            left: 0
+            right: 0
+            left: 0
+
+        &-email
+            margin-top: 10px
+        
+        &-address
+            order: 1
+            margin-top: 10px

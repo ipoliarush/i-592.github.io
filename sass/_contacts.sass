@@ -1,0 +1,98 @@
+.contacts
+    padding-top: $sectionPadding + 2px
+    padding-bottom: $sectionPadding - 5px
+    background-color: $accent
+
+    .container
+        display: flex
+        flex-direction: column
+
+    &-title
+        margin-top: 53px
+
+
+    &-article
+        margin-top: 62px
+        display: flex
+        justify-content: space-between
+
+        &__map
+            max-width: 733px
+            width: 100%
+
+        &__form
+            display: flex
+            max-width: 406px
+            width: 100%
+            flex-direction: column
+
+            &-title
+                color: #262626
+                font-weight: 500
+                font-size: 24px
+                line-height: 100%
+                margin-top: 0
+                margin-bottom: 30px
+
+            &-email
+                background-color: #F8F8F8
+                border: none
+                outline: none
+                padding-left: 23px
+                font-size: 16px
+                line-height: 100%
+                height: 56px
+                margin-bottom: 10px
+
+
+            &-comment
+                padding-top: 18px
+                padding-left: 23px
+                font-size: 16px
+                font-weight: normal
+                font-family: $roboto
+                line-height: 100%
+                border: none
+                outline: none
+                resize: none
+                width: 100%
+                margin-bottom: 20px
+                height: 140px
+
+            &-btn
+                font-weight: 500
+                font-size: 16px
+                line-height: 100%
+                text-transform: uppercase
+                cursor: pointer
+                font-family: inherit
+                color: #272727
+                height: 60px
+                letter-spacing: 0.05em
+                border: 1px solid #000000
+                filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.05))
+                background-color: rgba(0, 0, 0, 0)
+
+@media screen and (max-width: 1200px)
+    .contacts
+
+        &-article
+
+            &__map
+                max-width: 406px
+
+@media screen and (max-width: 880px)
+    .contacts
+
+        &-num
+            text-align: center
+
+        &-title
+            text-align: center
+
+        &-article
+            flex-direction: column-reverse
+            align-items: center
+
+            &__map
+                margin-top: 50px

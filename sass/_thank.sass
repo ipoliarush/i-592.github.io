@@ -1,0 +1,44 @@
+.thank
+    position: fixed
+    height: 100vh
+    width: 100vw
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 1000
+    background-color: rgba(0, 0, 0, .4)
+    display: flex
+    justify-content: center
+    align-items: center
+
+    &-modal
+        background-color: #fff
+        position: relative
+        display: flex
+        flex-direction: column
+        align-items: center
+        z-index: 9000
+        padding-top: 35px
+        padding-bottom: 35px
+        max-width: 360px
+        width: 100%
+
+        &__close
+            position: absolute
+            top: 0
+            right: -27px
+            cursor: pointer
+
+        &__title
+            margin-top: 20px
+            margin-bottom: 0
+            font-weight: 500
+            font-size: 24px
+            line-height: 100%
+            color: #262626
+
+        &__text
+            max-width: 235px
+            text-align: center
+            color: rgba(38, 38, 38, 0.8)

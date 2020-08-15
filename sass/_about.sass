@@ -1,0 +1,36 @@
+.about
+    padding-top: $sectionPadding
+    padding-bottom: $sectionPadding
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-row-gap: 50px
+
+    &-num
+        grid-column-start: 1
+        grid-column-end: 3
+
+    &-title
+        max-width: 486px
+
+    &-article
+        padding-top: 6px
+        padding-left: 17px
+
+
+        &__text
+            max-width: 499px
+            margin-top: 0
+            margin-bottom: 0
+
+            &:not(:last-child)
+                margin-bottom: 35px
+
+@media screen and (max-width: 1060px)
+    .about
+        grid-template-columns: 1fr
+
+        &-article
+            padding-left: 0
+        
+        &-title
+            grid-column: 1 / 3

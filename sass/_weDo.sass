@@ -1,0 +1,145 @@
+.we-do
+    padding-top: $sectionPadding
+    padding-bottom: 55px
+    background-image: url('../images/dest/we-do-bg.jpg')
+
+    .container
+        display: flex
+        align-items: center
+        flex-direction: column
+
+    &-num
+        color: #fff
+
+    &-title
+        color: #ffffff
+        margin-top: 48px
+
+    &-subtitle
+        margin-top: 23px
+        margin-bottom: 0
+        font-weight: normal
+        font-size: 24px
+        line-height: 135%
+        color: #FFFFFF
+
+    &-text
+        margin-top: 10px
+        margin-bottom: 0
+        line-height: 135%
+        color: rgba(255, 255, 255, 0.7)
+
+    &-list
+        margin-top: 74px
+        list-style: none
+        padding: 0
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        max-width: 1040px
+        width: 100%
+        
+
+        &__item
+            position: relative
+            &:nth-child(1)
+                max-width: 125px
+                padding-left: 8px
+
+                .we-do-list__item-text
+                    max-width: 119px
+                    left: 3px
+
+                .we-do-list__item-title
+                    left: 3px
+
+            &:nth-child(2)
+                max-width: 131px
+                justify-self: center
+                right: 17px
+
+                .we-do-list__item-title
+                    right: 3px
+
+                .we-do-list__item-text
+                    top: 9px
+                    right: 2px
+
+            &:nth-child(3)
+                max-width: 130px
+                justify-self: center
+                left: 24px
+
+                .we-do-list__item-title
+                    right: 4px
+
+                .we-do-list__item-text
+                    right: 3px
+                    top: 7px
+
+
+            &:nth-child(4)
+                justify-self: flex-end
+
+                .we-do-list__item-title
+                    right: 4px
+                    top: 1px
+
+                .we-do-list__item-text
+                    left: 10px
+
+            &-img
+                width: 124px
+                filter: drop-shadow(0px 10px 25px rgba(254, 219, 117, 0.15))
+
+            &-title
+                margin-top: 23px
+                margin-bottom: 0
+                font-weight: 500
+                font-size: 18px
+                position: relative
+                color: #FFFFFF
+                text-align: center
+
+            &-text
+                margin-top: 10px
+                position: relative
+                margin-bottom: 0
+                max-width: 133px
+                font-size: 14px
+                color: rgba(255, 255, 255, 0.7)
+                line-height: 19px
+
+@media screen and (max-width: 800px)
+    .we-do
+
+        &-list
+            grid-template-columns: 1fr 1fr
+            grid-row-gap: 50px
+
+            &__item
+                justify-self: center !important
+                max-width: none !important
+                top: 0 !important
+                bottom: 0 !important
+                left: 0 !important
+                right: 0 !important
+
+                &-text,
+                &-title,
+                &-img
+                    top: 0 !important
+                    bottom: 0 !important
+                    left: 0 !important
+                    right: 0 !important
+
+@media screen and (max-width: 540px)
+    .we-do
+
+        &-list
+            grid-template-columns: 1fr
+
+            &__item
+
+                &-text
+                    text-align: center
+                    
