@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			links: [
 				{
 					text: 'Home',
-					href: '.main-slider'
+					href: 'html'
 				},
 				{
 					text: 'Services',
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		mixins: [sliderMixin],
 		el: '#projects-slider-3',
 		data: {
-			countSlide = 3,
+			countSlide = 2,
 		}
 	})
 
@@ -248,6 +248,30 @@ document.addEventListener("DOMContentLoaded", function() {
 					})
 			}
 		}
+	})
+
+	const sliderBtns = document.querySelectorAll('.main-slider__slide-content__info-btn')
+
+	sliderBtns[0].addEventListener('click', () => {
+		scrollTo('.about')
+	})
+
+	sliderBtns[1].addEventListener('click', () => {
+		scrollTo('.we-do')
+	})
+
+	sliderBtns[2].addEventListener('click', () => {
+		scrollTo('.projects')
+	})
+
+	sliderBtns[3].addEventListener('click', () => {
+		scrollTo('.join')
+	})
+
+	const logo = document.querySelector('.header-logo')
+
+	logo.addEventListener('click', () => {
+		scrollTo('html')
 	})
 
 })
